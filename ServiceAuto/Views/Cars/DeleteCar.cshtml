@@ -1,0 +1,20 @@
+﻿@model ServiceAuto.Models.Cars
+
+@{
+    ViewBag.Title = "DeleteCar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Car deleted</h2>
+
+<div>
+
+    @using (Html.BeginForm("DeleteCar", "Cars"))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Return" class="btn btn-default" />
+        </div>
+    }
+</div>

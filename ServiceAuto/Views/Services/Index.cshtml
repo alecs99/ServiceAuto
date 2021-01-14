@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ServiceAuto.Models.Services>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Table of current Services </h2>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Add new Service", "NewService")
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServicePrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExecutionTime)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.ServiceName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ServicePrice)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ExecutionTime)
+    </td>
+    @if (User.IsInRole("Admin"))
+    {
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {id = item.IdService}) |
+            @Html.ActionLink("Delete", "Delete", new {id = item.IdService})
+        </td>
+    }
+</tr>
+}
+
+</table>

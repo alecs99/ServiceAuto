@@ -1,0 +1,21 @@
+﻿@model ServiceAuto.Models.Services
+
+
+@{
+    ViewBag.Title = "DeleteReservation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Reservation deleted</h2>
+
+<div>
+
+    @using (Html.BeginForm("DeleteReservation", "Reservations"))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Return" class="btn btn-default" />
+        </div>
+    }
+</div>
